@@ -27,3 +27,21 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+
+users = ["ben", "brian", "evan", "anthony"]
+user_balance = []
+
+for user in users
+  balance = 0
+  for transaction in blockchain
+    if transaction[:to_user] == user
+      balance = balance + transaction[:amount]
+    elsif transaction[:from_user] == user
+      balance = balance - transaction[:amount]
+    else
+      balance = balance
+    end
+  end
+  user_balance.push({user: user.capitalize, balance: balance})
+  puts "#{user.capitalize}'s KelloggCoin balance is #{balance}"
+end
